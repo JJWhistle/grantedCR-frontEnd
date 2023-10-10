@@ -19,7 +19,7 @@ const MainLayout = () => {
                         <a href="https://wa.me/50688948665" target='_blank'><img src={whatsapp} className="main__icon" alt="whatsapp logo" /></a>
                         <a href="https://www.facebook.com/grantedcr" target='_blank'><img src={facebook} className="main__icon" alt="facebook logo" /></a>
                         <a href="https://www.instagram.com/grantedcr?igshid=MmIzYWVlNDQ5Yg==" target='_blank'><img src={instagram} className="main__icon" alt="instagram logo" /></a>
-                        <a href="https://mailto:jasson.grant97@gmail.com" target='_blank'><img src={gmail} className="main__icon" alt="instagram logo" /></a>
+                        <a href="mailto:jasson.grant97@gmail.com" target='_blank'><img src={gmail} className="main__icon" alt="instagram logo" /></a>
                     </div>
 
 
