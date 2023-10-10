@@ -1,0 +1,19 @@
+
+
+.main {
+    text-align: center;
+
+    &__text {
+        margin-bottom: 3rem;
+    }
+
+    &__icons {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    &__icon {
+        width: 5rem;
+    }
+}
