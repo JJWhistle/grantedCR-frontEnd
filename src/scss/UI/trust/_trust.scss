@@ -1,0 +1,28 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.trust {
+    &__flex {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        @include m.device(v.$tablet) {
+            flex-direction: row;
+        }
+    }
+
+    &__image {
+        width: 10rem;
+        margin: 0 auto;
+        
+    }
+
+    &__heading, &__text {
+        text-align: center;
+    }
+
+    &__heading {
+        margin-top: 3rem;
+    }
+}

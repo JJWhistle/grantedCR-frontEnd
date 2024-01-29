@@ -1,0 +1,92 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.tour {
+    border-radius: .5rem;
+    scroll-snap-align: center;
+    overflow: hidden;
+    
+    @include m.device(v.$tablet) {
+        @include m.shadow();
+    }
+
+    &__graphic {
+        position: relative;
+    }
+
+    &__img {
+        aspect-ratio: 16/9;
+        // max-height: 30rem;
+        object-fit: cover;
+        // width: 100%;
+    }
+
+    &__details {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 2rem;
+    }
+
+    &__block {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    &__detail {
+        background-color: transparentize(v.$lightFontColor, .2);
+        padding: .2rem 1rem;
+        border-radius: .5rem;
+        text-align: center;
+        font-size: 10rem;
+        border: .1rem solid darken(v.$lightFontColor, 3%);
+
+        @include m.scheme() {
+            background-color: transparentize(v.$darkFontColor, .2);
+            border: .1rem solid darken(v.$darkFontColor, 3%);
+
+        }
+    }
+
+    &__paragraph {
+        font-size: 1.3rem;
+            font-weight: 700;
+            &-span {
+            display: block;
+            background-color: v.$darkFontColor;
+            color: v.$lightFontColor;
+            text-transform: uppercase;
+            border-radius: .3rem;
+            padding-inline: 1rem;
+
+            @include m.scheme() {
+                background-color: v.$lightFontColor;
+                color: v.$darkFontColor;
+            }
+    }
+    }
+
+    &__info {
+        padding: 2rem;
+    }
+
+    &__button {
+            @include m.button(v.$darkFontColor, v.$lightFontColor);
+        width: 100%;
+
+        @include m.scheme() {
+            @include m.button(v.$lightFontColor, v.$darkFontColor);
+            // @include m.button(v.$darkFontColor, v.$lightFontColor);
+        }
+    }
+
+    &__title {
+        font-size: 2.2rem;
+    }
+}

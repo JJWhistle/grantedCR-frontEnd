@@ -1,4 +1,5 @@
 @use 'base/variables' as v;
+@use 'base/mixins' as m;
 
 :root {
     font-size: 62.5%;
@@ -8,14 +9,19 @@
 
   
     color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    color: v.$darkFontColor;
+    background-color: v.$dark;
   
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
+
+    @include m.scheme() {
+        color: v.$lightFontColor;
+        background-color: v.$light;
+    }
 }
 
 html {
@@ -38,13 +44,36 @@ html {
     justify-content: space-between;
 }
 
+img {
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+}
+video {
+    max-width: 100%;
+    display: block;
+}
+
 a {
     font-weight: 500;
-    color: #646cff;
+    color: v.$darkFontColor;
     text-decoration: inherit;
 
+    @include m.scheme() {
+        color: v.$lightFontColor;
+        
+    }
+
+
     &:hover {
-        color: #535bf2;
+        color: darken(v.$darkFontColor, 20%);
+        
+
+        @include m.scheme() {
+            color: lighten(v.$lightFontColor, 20%);
+            
+        }
+
     }
 }
 
@@ -57,11 +86,15 @@ body {
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 4.5rem;
 }
 
 h2 {
-    font-size: 3.8rem;
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 2.6rem;
 }
 
 h1, h2, h3 {
@@ -75,33 +108,67 @@ p, a {
     font-size: 2rem;
 }
 
-@media (prefers-color-scheme: light) {
-    :root {
-      color: #213547;
-      background-color: #ffffff;
-    }
-  
-    a {
-        &:hover {
-            color: #747bff;
-
-        }
-    }
-  
-    button {
-      background-color: #f9f9f9;
-    }
-}
+// button {
+//     @include m.scheme() {
+//         background-color: #f9f9f9;
+//     }
+// }
 
 [class$='__container'] {
     padding-block: 5rem;
     overflow: hidden;
-    height: 100%;
 }
 
 [class$='__wrapper'] {
     width: 90%;
     max-width: 120rem;
     margin-inline: auto;
-    height: 100%;
+    // height: 100%;
+}
+
+
+::-webkit-scrollbar {
+    width: .5rem;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 .6rem darken(v.$dark, 10%); 
+    border-radius: 10px;
+
+    @include m.scheme() {
+        box-shadow: inset 0 0 .5rem darken(v.$light, 50%); 
+    }
+}
+
+::-webkit-scrollbar-thumb {
+    background: lighten(v.$dark, 40%); 
+    border-radius: 1rem;
+}
+
+span {
+    font-size: 2rem;
+}
+
+.button {
+    @include m.button(v.$darkFontColor, v.$lightFontColor);
+    
+    @include m.scheme() {
+        @include m.button(v.$lightFontColor, v.$light);
+    }
+    
+    &-center {
+        max-width: 30rem;
+        margin-inline: auto;
+        margin-top: 3rem;
+    }
+
+    &-left {
+        max-width: 30rem;
+    }
+}
+
+.icon {
+    width: 2.8rem;
+    color: v.$secundaryColor;
+    stroke: v.$secundaryColor;
 }

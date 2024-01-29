@@ -1,0 +1,58 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.navBar {
+    display: none;
+
+    &.showNav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @include m.device(v.$tablet) {
+        display: flex;
+        flex-direction: row;
+
+        &.showNav {
+            flex-direction: row;
+        }
+    }
+
+    &__link {
+        color: v.$darkFontColor;
+        padding: 1rem 2rem;
+
+        &:hover {
+            color: currentColor;
+        }
+
+        &-scrolled {
+            @include m.scheme() {
+                color: v.$lightFontColor;
+
+                &:hover {
+                    color: v.$lightFontColor;
+                }
+            }
+        }
+    }
+}
+
+.active {
+    background-color: v.$darkFontColor;
+    color: v.$lightFontColor;
+    @include m.shadow();
+
+    &:hover {
+        color: v.$lightFontColor;
+    }
+
+    @include m.scheme() {
+        background-color: v.$lightFontColor;
+        color: v.$darkFontColor;
+
+        &:hover {
+            color: v.$darkFontColor;
+        }
+    }
+}

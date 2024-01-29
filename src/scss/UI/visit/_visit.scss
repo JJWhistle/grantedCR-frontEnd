@@ -1,0 +1,59 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.visit {
+    &__heading {
+        text-align: center;
+    }
+
+    &__span {
+        display: block;
+    }
+
+    &__grid {
+        display: grid;
+        gap: 4rem;
+        @include m.device(v.$desktop) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+
+    &__column {
+        &-left {
+            @include m.device(v.$desktop) {
+                grid-column: 1/2;
+                grid-row: 2/3;
+            }
+        
+        }
+    }
+
+    &__image {
+        height: 40rem;
+
+        @include m.device(v.$tablet) {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &__content {
+        margin-bottom: 5rem;
+    }
+
+    &__flex {
+        display: grid;
+        // overflow-x: auto;
+        // grid-template-columns: repeat(6, 30rem);
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        gap: 2rem;
+        scroll-snap-type: x mandatory;
+
+        // @include m.device(v.$tablet) {
+        //     overflow: unset;
+        //     grid-template-columns: repeat(3, 1fr);
+        // }
+    }
+
+}
