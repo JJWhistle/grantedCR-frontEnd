@@ -7,6 +7,8 @@ import Construction from '../assets/icons/Construction';
 const FeaturedProperty = ({properties, loadingProperties}) => {
     
     if(loadingProperties) return;
+    if(properties.length === 0) return 
+    
     const featuredProperty = properties.reduce((maxProperty, currentProperty) => currentProperty.price > maxProperty.price ? currentProperty : maxProperty);
 
     return (

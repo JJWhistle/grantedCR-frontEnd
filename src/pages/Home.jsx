@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import clienteAxios from "../config/axios";
+import {clienteAxios} from "../config/axios";
 import Visit from "../sections/Visit";
 import Live from "../sections/Live";
 import Trust from "../sections/Trust";

@@ -1,6 +1,7 @@
 const Tours = () => {
   return (
     <>
+      <h1>hola mundo desde Tour</h1>
     </>
   )
 }
