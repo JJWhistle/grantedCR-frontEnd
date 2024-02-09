@@ -31,8 +31,6 @@ const ClientLayout = () => {
 
     getPage();
   }, [pageParams])
-
-  if(loading) return <h1>Loading</h1>
   return (
     <>
       <SecundaryHeader page={page}/>

@@ -15,7 +15,7 @@ const FeaturedProperty = ({properties, loadingProperties}) => {
     <>
     
         <div className="featured">
-            <img className="featured__image" src={featuredProperty.images[0].url} alt="Featured Property" />
+            <img className="featured__image" src={featuredProperty.imageUrl} alt="Featured Property" />
             <div className="featured__info">
                 <div className='featured__flex'>
                     <div className="featured__wrapper">
