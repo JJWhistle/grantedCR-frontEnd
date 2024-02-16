@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { clienteAxios } from "../config/axios";
 import Property from "../components/Property";
+import RealEstateAside from "../components/RealEstateAside";
 
 const RealEstate = () => {
     const [loading, setLoading] = useState(true);
     const [properties, setProperties] = useState([]);
+    const [newProperties, setNewProperties] = useState([]);
 
     useEffect(() => {
         const getProperties = async () => {
             try {
-                const {data} = await clienteAxios('/public-properties');
-                
+                const { data } = await clienteAxios('/public-properties');
                 setProperties(data);
             } catch (error) {
                 console.error('error:', error);
@@ -20,9 +21,12 @@ const RealEstate = () => {
         }
 
         getProperties();
-
-
     }, [])
+
+    const test = (result) => {
+        setNewProperties(result);
+    }
+      
     return (
         <>
             <div className="real-estate">
@@ -30,28 +34,21 @@ const RealEstate = () => {
                     <h2 className="real-estate__heading">Fulfill Your Dreams</h2>
                     
                     <div className="real-estate__flex">
-
-                        <aside className="real-estate__aside">
-                            <h1>aside</h1>
-                        </aside>
+                        <RealEstateAside properties={properties} test={test} />
                         
                         <div className="real-estate__properties">
-                            {properties.map(property => (
+                            {newProperties.map(property => (
                                 <Property
                                     key={property._id}
                                     property={property}
-                                    loading={loading}
                                 />
                             ))}
                         </div>
-                        
                     </div>
-
-
                 </div>
             </div>
         </>
-      )
+    );
 }
 
-export default RealEstate
+export default RealEstate;

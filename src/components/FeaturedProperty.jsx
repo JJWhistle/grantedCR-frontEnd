@@ -3,6 +3,7 @@ import BathLogo from "../assets/icons/BathLogo";
 import BedLogo from "../assets/icons/BedLogo";
 import Area from '../assets/icons/Area';
 import Construction from '../assets/icons/Construction';
+import { NumericFormat } from 'react-number-format';
 
 const FeaturedProperty = ({properties, loadingProperties}) => {
     
@@ -49,7 +50,9 @@ const FeaturedProperty = ({properties, loadingProperties}) => {
                                     />
                                 </span>
                                 
-                                <p className='featured__price'>Offered at US${featuredProperty.price}</p>
+                                <p className='featured__price'>Offered at&nbsp;    
+                                    <NumericFormat className='featured__price' value={featuredProperty.price.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                </p>
                                 
                                 <Link className='button' to={`/real-estate/${featuredProperty._id}`}>View</Link>
                             </div>

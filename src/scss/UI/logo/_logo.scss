@@ -7,7 +7,7 @@
 
     @include m.device(v.$tablet) {
         display: block;
-        width: 25rem;
+        width: 20rem;
         height: unset;
         fill: v.$darkFontColor;
 

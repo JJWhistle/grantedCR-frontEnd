@@ -33,7 +33,7 @@
     
     &__logo {
         filter: invert(1);
-        max-width: 25rem;
+        max-width: 20rem;
 
         @include m.scheme() {
             filter: unset;

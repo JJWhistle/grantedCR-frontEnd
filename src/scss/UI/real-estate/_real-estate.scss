@@ -8,17 +8,26 @@
 
     &__flex {
         display: flex;
-        gap: 2rem;
-    }
-
-    &__aside {
-        width: 30rem;
-        top: 0;
+        flex-direction: column;
+        height: max-content;
+        
+        @include m.device(v.$tablet) {
+            flex-direction: row;
+        }
     }
 
     &__properties {
+        width: 100%;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+
+        @include m.device(v.$tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include m.device(v.$XLDesktop) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
         gap: 2rem;
     }
 }

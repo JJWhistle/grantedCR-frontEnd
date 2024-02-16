@@ -1,0 +1,15 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.aside {
+    height: max-content;
+    width: 100%;
+
+    @include m.device(v.$tablet) {
+        max-width: 30rem;
+        position: sticky;
+        top: 0;
+        padding: 2rem;
+
+    }
+}
