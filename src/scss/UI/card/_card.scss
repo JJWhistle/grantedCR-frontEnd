@@ -1,0 +1,28 @@
+.card {
+
+    &__heading {
+        font-size: 2.6rem;
+        text-align: center;
+    }
+    &__image {
+        aspect-ratio: 16/15;
+        max-width: 20rem;
+        margin-inline: auto;
+        margin-bottom: 3rem;
+    }
+
+    &__name {
+        font-size: 3rem;
+    }
+    
+    &__label {
+        font-size: 1.6rem;
+        font-weight: 700;
+
+    }
+
+    &__span {
+        font-size: 1.6rem;
+        font-weight: 400;
+    }
+}

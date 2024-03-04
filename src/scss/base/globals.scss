@@ -38,10 +38,10 @@ html {
 }
 
 .root {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    // min-height: 100vh;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
 }
 
 img {
@@ -77,11 +77,11 @@ a {
 }
 
 body {
-    margin: 0;
+    // margin: 0;
     // display: flex;
     // place-items: center;
     // min-width: 320px;
-    min-height: 100vh;
+    // min-height: 100vh;
 }
 
 h1 {
@@ -112,12 +112,6 @@ p, a {
     font-size: 1.6rem;
 }
 
-// button {
-//     @include m.scheme() {
-//         background-color: #f9f9f9;
-//     }
-// }
-
 [class$='__container'] {
     padding-block: 5rem;
     overflow: hidden;
@@ -126,13 +120,13 @@ p, a {
 [class$='__wrapper'] {
     width: 90%;
     max-width: 120rem;
-    margin-inline: auto;
-    // height: 100%;
+    margin: 0 auto;
 }
 
 
 ::-webkit-scrollbar {
-    width: .5rem;
+    width: .7rem;
+    height: .7rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -149,11 +143,18 @@ p, a {
     border-radius: 1rem;
 }
 
+ul {
+    list-style-type: none;
+}
+
+
 span {
     font-size: 2rem;
 }
 
 .button {
+    all: unset;
+    
     @include m.button(v.$darkFontColor, v.$lightFontColor);
     
     @include m.scheme() {

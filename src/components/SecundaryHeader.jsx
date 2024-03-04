@@ -1,7 +1,33 @@
 import Bar from './Bar';
+import { useEffect, useState } from "react";
+import {clienteAxios, pageAxios} from "../config/axios";
+import {useParams} from 'react-router-dom';
 
 
-const SecundaryHeader = ({page}) => {
+const SecundaryHeader = () => {
+  const [page, setPage] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const params = useParams();
+  const {pageParams, id} = params;
+
+
+  useEffect(() => {
+    const getPage = async () => {
+      try {
+        const {data} = await pageAxios(`/${pageParams}`);
+
+        setPage(data[0]);
+        
+      } catch (error) {
+        console.log(error);
+      }
+
+      setLoading(false);
+    }
+
+
+    getPage();
+  }, [pageParams])
   
 
   return (

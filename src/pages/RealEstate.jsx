@@ -34,7 +34,9 @@ const RealEstate = () => {
                     <h2 className="real-estate__heading">Fulfill Your Dreams</h2>
                     
                     <div className="real-estate__flex">
-                        <RealEstateAside properties={properties} test={test} />
+                        <div className="real-estate_aside">
+                            <RealEstateAside properties={properties} test={test} />
+                        </div>
                         
                         <div className="real-estate__properties">
                             {newProperties.map(property => (

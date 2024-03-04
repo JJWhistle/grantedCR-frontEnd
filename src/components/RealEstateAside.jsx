@@ -45,7 +45,7 @@ const RealEstateAside = ({properties, test}) => {
   return (
     <>  
       <aside className="aside">
-        <h3 className="aside__heading">There it is!</h3>
+        <h3 className="aside__heading">Find your Home!</h3>
         
         <form action="" className="form">
 
@@ -84,6 +84,14 @@ const RealEstateAside = ({properties, test}) => {
 
 
         </form>
+
+        <div className="aside__contact">
+          <p className="aside__text">Still need assistance?</p>
+          
+          <p className="aside__text">+(506) 8894-8665</p>
+          <p className="aside__text">jason@grantedcr.com</p>
+          <p className="aside__text">jasson@century21flamingo.com</p>
+        </div>
       </aside>
         
     </>

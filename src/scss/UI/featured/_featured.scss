@@ -47,7 +47,12 @@
 
     &__icon {
         display: flex;
-        gap: 2rem;
+        gap: .9rem;
+    }
+
+    &__text{
+        font-size: 1.8rem;
+        font-weight: 700;
     }
 
     &__price {

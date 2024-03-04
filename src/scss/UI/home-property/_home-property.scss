@@ -5,6 +5,7 @@
     overflow: hidden;
     @include m.shadow();
     text-align: left;
+    height: max-content;
 
     &__graphic {
         position: relative;
@@ -25,6 +26,11 @@
         object-fit: cover;
     }
 
+    &__price {
+        font-weight: 700;
+        font-size: 2.7rem;
+    }
+
     &__title {
         font-size: 2.3rem;
         @include m.scheme() {
@@ -43,16 +49,17 @@
     }
 
     &__flex {
-        justify-content: space-around;
         margin-bottom: 3rem;
         
         @include m.device(v.$desktop) {
             display: flex;
+            gap: 2rem;
         }
     }
 
     &__icon {
         display: flex;
         gap: 1rem;
+        align-items: flex-end;
     }
 }

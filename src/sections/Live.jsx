@@ -4,11 +4,17 @@ import HomeProperty from "../components/HomeProperty";
 import FeaturedProperty from '../components/FeaturedProperty';
 
 const Live = ({properties, loadingProperties}) => {
+  
+  const mostExpensiveItem = properties.reduce((maxItem, currentItem) => {
+    return currentItem.price > maxItem.price ? currentItem : maxItem;
+  }, properties[0]);
 
+  // const newProperties = properties.filter(properties => properties !== mostExpensiveItem);
   
-  const organizedProperties = properties.slice(0, properties.length -1);
+  const newProperties = properties.filter(properties => properties !== mostExpensiveItem);
+  const displayNewProperties = newProperties.slice(0, 6);
   
-  // organizedProperties.sort((a, b) => a.price - b.price);
+  
   return (
     <>
     <section className="live">
@@ -18,7 +24,7 @@ const Live = ({properties, loadingProperties}) => {
 
         <div className="live__grid">
 
-          {organizedProperties.map(property => (
+          {displayNewProperties.map(property => (
               <HomeProperty
                 key={property._id}
                 property={property}
@@ -27,7 +33,7 @@ const Live = ({properties, loadingProperties}) => {
 
         </div>
 
-        <Link to={'/real-estate'} className="button button-center">View all Properties</Link>
+        <Link to={'/real-estate'} className="button button-center">View All</Link>
 
       </div>
     </div>
@@ -36,8 +42,7 @@ const Live = ({properties, loadingProperties}) => {
 
       <div className="live__featured">
         <FeaturedProperty
-          properties={properties}
-          loadingProperties={loadingProperties} />
+          mostExpensiveItem={mostExpensiveItem} />
       </div>
   </section>
     </>

@@ -4,24 +4,30 @@
 .real-estate {
     &__heading{
         text-align: center;
+        margin: 0;
+        padding-bottom: 2rem;
     }
 
     &__flex {
         display: flex;
         flex-direction: column;
-        height: max-content;
         
         @include m.device(v.$tablet) {
             flex-direction: row;
+            height: 60rem;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
     }
 
     &__properties {
         width: 100%;
+        height: max-content;
         display: grid;
 
         @include m.device(v.$tablet) {
             grid-template-columns: repeat(2, 1fr);
+            margin-top: 3rem;
         }
 
         @include m.device(v.$XLDesktop) {

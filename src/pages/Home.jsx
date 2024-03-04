@@ -46,13 +46,13 @@ const Home = () => {
 
   return (
     <>
-      <Visit
+      {tours.length > 0 && <Visit
         tours = {tours}
-        loadingTours = {loadingTours} />
+        loadingTours = {loadingTours} />}
       
-      <Live
+      {properties.length > 0 && <Live
         properties = {properties}
-        loadingProperties = {loadingProperties} />
+        loadingProperties = {loadingProperties} />}
 
       <Trust />
     </>
