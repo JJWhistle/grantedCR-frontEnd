@@ -1,4 +1,4 @@
-import { SlArrowLeft, SlArrowRight, SlClose  } from "react-icons/sl";
+import { SlArrowLeft, SlArrowRight  } from "react-icons/sl";
 
 const Slider = ({object, setIsOpen, imageIndex, setImageIndex}) => {
     const {imageUrls, title} = object;
@@ -19,11 +19,6 @@ const Slider = ({object, setIsOpen, imageIndex, setImageIndex}) => {
 
         return index + 1;
       })
-    }
-
-    const closeSlider = () => {
-      document.body.style.overflow = 'auto';
-      setIsOpen(false);
     }
 
 

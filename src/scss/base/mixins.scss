@@ -20,16 +20,16 @@
 }
 
 @mixin button($bgColor, $txtColor) {
+    all: unset;
     display: block;
     background-color: $bgColor;
     color: $txtColor;
     text-align: center;
     margin-top: 2rem;
-    padding: .8rem 2rem;
+    padding: .5rem 2rem;
     border-radius: .5rem;
     font-size: 1.6rem;
     font-weight: 700;
-    border: none;
     cursor: pointer;
 
     @include device(v.$tablet) {

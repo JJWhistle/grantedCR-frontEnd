@@ -26,6 +26,10 @@
         object-fit: cover;
     }
 
+    &__link {
+        @include m.button(v.$darkFontColor, v.$dark)
+    }
+
     &__price {
         font-weight: 700;
         font-size: 2.7rem;

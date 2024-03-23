@@ -1,41 +1,87 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import {Link} from "react-router-dom";
+import { SlArrowLeft, SlArrowRight  } from "react-icons/sl";
+import { NumericFormat } from "react-number-format";
+import BookCalendar from './BookCalendar';
+
+
+import User from "../assets/icons/User";
+import Users from "../assets/icons/Users";
+
 
 const Tour = ({tour, loadingTours}) => {
+  const [imageIndex, setImageIndex] = useState(0);
+  const showPrevImage = () => {
+    setImageIndex(index => {
+      if(index === 0) return tour.imageUrls.length - 1;
+
+      return index - 1;
+    });
     
+  }
+
+  const showNextImage = () => {
+    setImageIndex(index => {
+      if(index === tour.imageUrls.length - 1) return 0;
+
+      return index + 1;
+    })
+  }
+  
+
   return (
     <>
-    {loadingTours
-        ? <p>hola</p> 
-        : <div className='tour'>
-        <div className='tour__graphic'>
-            <img src={tour.images[0].url} alt="Tour Image" className='tour__img' />
+      <div className="tour">
+        <div className="tour__graphic">
+          <img src={`${tour.imageUrls[imageIndex]}`} className="tour__image" alt= {`${tour.title} Image Number ${imageIndex + 1}`} />
+          <button onClick={showPrevImage} className="tour__btn" style={{left:'0'}}><SlArrowLeft /></button>
+          <button onClick={showNextImage} className="tour__btn" style={{right:'0'}}><SlArrowRight /></button>
+        </div>
+        
+        <div className="tour__flex">
+          <div className="tour__details">
+            <h3 className="tour__heading">{tour.title}</h3>
+            
+            <div className="tour__icons">
+              <div className="tour__icon">
+                <Users />
+                <p className="tour__text">Minimum Party: <span className="tour__text-span">{`${tour.min_traveller} People`}</span></p>
+              </div>
 
-            <div className='tour__details'>
+              <div className="tour__icon">
+                <User />
+                <p className="tour__text">Minimun Age: <span className="tour__textt-span">{tour.min_age}</span> y/o</p>
+              </div>
+            </div>
 
-                <div className='tour__block'>
-                    <div className="tour__detail">
-                        <p className='tour__paragraph'>{tour.duration}</p>
-                    </div>
-                    
-                    <div className='tour__detail'>
-                        <p className='tour__paragraph'><span className='tour__paragraph tour__paragraph-span'>From</span> {`$${tour.price}USD`}</p>
-                    </div>
+            <div className="tour__desc">
+              <p className="tour__text">{tour.description}</p>
 
-                </div>
+            </div>
+
+
+            <Link to={`${tour._id}`} className="tour__button tour__button-more">More Details</Link>
+          </div>
+
+          <div className="tour__book">
+              <p className="tour__price">
+                From
+                <NumericFormat className='tour__price tour__price-number' value={tour.price.toFixed(2)} displayType={'text'}   thousandSeparator={true} prefix={'$'} />
+
+              </p>
+              
+              <div className="tour__bottons">
+                <button className="tour__button tour__button-add">Add to Cart</button>
+                <Link to={`book/${tour._id}`} className="tour__button">Book Now</Link>
+              </div>
+
             </div>
         </div>
 
-        <div className="tour__info">
-            <h3 className="tour__title">{tour.title.length > 25 ? tour.title.substr(0,25) + '...' : tour.title}</h3>
-            <p className='tour__text'>{tour.description.length > 160 ? tour.description.substr(0, 160) + '...' : tour.description}</p>
-            <Link to={`/tours/${tour._id}`} className='button'>More Details</Link>
-        </div>
-    </div>}
-        
-        
+      </div>
+        <BookCalendar />
     </>
   )
 }
 
-export default Tour;
+export default Tour

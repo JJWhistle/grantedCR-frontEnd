@@ -41,8 +41,8 @@ const AgentCard = ({property, loading}) => {
   return (
     <>
     <div className="card">
-        <h2 className="card__heading">Listing Agent</h2>
-        <img className="card__image" src={agent.profilePictureUrl} alt={`${agent.name}'s Profile Picture`} />
+        <h2 className="card__heading">Contact Agent</h2>
+        <img loading="lazy" className="card__image" src={agent.profilePictureUrl} alt={`${agent.name}'s Profile Picture`} />
         <p className="card__name">{`${agent.name} ${agent.lastName}`}</p>
         <p className="card__label">Email: <span className="card__span">{agent.email}</span></p>
         {agent.phone && <p className="card__label">Phone: <span className="card__span">{agent.phone}</span></p>}
@@ -65,7 +65,7 @@ const AgentCard = ({property, loading}) => {
                     <textarea required name="message" id="message" rows="10" className="form__input" value={formData.message} onChange={handleInputChange}></textarea>
                 </div>
 
-            <input type="submit" className="form__submit" value={`Contact ${agent.name}`} />
+            <input type="submit" className="form__submit" value={`Contact ${agent.name}!`} />
         </form>
     </div>
     </>

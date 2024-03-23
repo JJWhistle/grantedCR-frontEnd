@@ -9,10 +9,12 @@
         max-width: 20rem;
         margin-inline: auto;
         margin-bottom: 3rem;
+        border-radius: .5rem;
     }
 
     &__name {
         font-size: 3rem;
+        font-weight: 700;
     }
     
     &__label {

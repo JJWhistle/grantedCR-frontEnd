@@ -11,7 +11,7 @@ const Galery = ({property, setIsOpen, setImageIndex}) => {
             {property.imageUrls.map((image, index) => (
                 <li key={index} className="real-estate-property__list">
                     <button className="real-estate-property__btn" onClick={() => openImage(index)}>
-                        <img className="real-estate-property__image" loading="lazy" src={image} alt={`${property.title} Image ${index + 1}`} />
+                        <img className="real-estate-property__image" src={image} alt={`${property.title} Image ${index + 1}`} />
                     </button>
                 </li>
             ))}

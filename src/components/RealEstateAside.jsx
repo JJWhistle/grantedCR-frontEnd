@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import AgentCard from './AgentCard';
 
 const RealEstateAside = ({properties, test}) => {
 
@@ -86,11 +87,11 @@ const RealEstateAside = ({properties, test}) => {
         </form>
 
         <div className="aside__contact">
-          <p className="aside__text">Still need assistance?</p>
+          <h3 className="aside__text">Still need assistance?</h3>
           
-          <p className="aside__text">+(506) 8894-8665</p>
-          <p className="aside__text">jason@grantedcr.com</p>
-          <p className="aside__text">jasson@century21flamingo.com</p>
+          <p className="aside__text">Contact  me!</p>
+          <p className="aside__text">Phone: +(506) 8894-8665</p>
+          <p className="aside__text">Email: jason@grantedcr.com</p>
         </div>
       </aside>
         

@@ -18,15 +18,16 @@
 
     &__graphic {
         position: relative;
-        max-height: 100vh;
         max-width: max-content;
     }
 
     &__image {
         max-height: 100%;
+        border-radius: .5rem;
+        height: 100%;
 
         @include m.device(v.$XLDesktop) {
-            width: 200rem;
+            // width: 200rem;
         }
     }
 

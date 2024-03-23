@@ -28,8 +28,7 @@ const Home = () => {
     const getProperties = async () => {
       try {
         const {data} = await clienteAxios('/public-properties');
-        setProperties(data);
-      
+        setProperties(data);      
       } catch (error) {
         console.log(error);
       }

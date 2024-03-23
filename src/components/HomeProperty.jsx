@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import BedLogo from '../assets/icons/BedLogo';
 import BathLogo from '../assets/icons/BathLogo';
-import { NumericFormat } from 'react-number-format';;
+import { NumericFormat } from 'react-number-format';
 
 
 const HomeProperty = ({property}) => {

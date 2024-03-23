@@ -3,7 +3,11 @@
 
 .secundaryHeader {
     position: relative;
-    height: 90vh;
+    height: 80vh;
+
+    @include m.device(v.$XLDesktop) {
+        height: 60vh;
+    }
 
     &__content {
         background-image: linear-gradient(transparentize(v.$lightFontColor, .2), transparent);

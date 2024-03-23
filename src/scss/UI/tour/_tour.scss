@@ -3,90 +3,167 @@
 
 .tour {
     border-radius: .5rem;
-    scroll-snap-align: center;
     overflow: hidden;
     
-    @include m.device(v.$tablet) {
-        @include m.shadow();
+    @include m.device(v.$desktop) {
+        display: flex;
+        gap: 2rem;
+    }
+    
+    @include m.device(v.$LDesktop) {
+        height: 40rem;
+        max-height: 45rem;
     }
 
     &__graphic {
         position: relative;
     }
 
-    &__img {
+    &__image {
         aspect-ratio: 16/9;
-        // max-height: 30rem;
-        object-fit: cover;
-        // width: 100%;
+        height: 100%;
+
+        @include m.device(v.$tablet) {
+            min-width: 50rem;
+        }
+    }
+
+    &__flex {
+        @include m.device(v.$LDesktop) {
+            display: flex;
+            gap: 2rem;
+        }
     }
 
     &__details {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 2rem;
+        margin-top: 2rem;
+
+        @include m.device(v.$desktop) {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
     }
 
-    &__block {
+    &__desc {
+        max-height: 12rem;
+        overflow: auto;
+
+    }
+
+    &__icons {
+        margin-bottom: 3rem;
+    }
+
+    &__icon {
         display: flex;
-        justify-content: space-between;
         align-items: flex-end;
+        gap: 1.2rem;
     }
 
-    &__detail {
-        background-color: transparentize(v.$lightFontColor, .2);
-        padding: .2rem 1rem;
-        border-radius: .5rem;
-        text-align: center;
-        font-size: 10rem;
-        border: .1rem solid darken(v.$lightFontColor, 3%);
+    &__btn {
+        all: unset;
+        transition: background-color .1s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        padding: 1rem;
+        cursor: pointer;
+        border-radius: 100%;
+        background-color: transparentize(black, .5);
+        &:hover {
+            background-color: transparentize(black, .2);
+            
+        }
 
-        @include m.scheme() {
-            background-color: transparentize(v.$darkFontColor, .2);
-            border: .1rem solid darken(v.$darkFontColor, 3%);
+        &:focus {
+            outline: none;
+        }
 
+        &:focus-visible {
+            outline: .2rem solid v.$darkFontColor;
+        }
+
+        @include m.device(v.$tablet) {
+            width: 7rem;
+            height: 7rem;
+        }
+        
+        > * {
+            stroke: white;
+            fill: white;
+            width: 2rem;
+            height: 2rem;
+            
+            
+
+            
+            @include m.device(v.$tablet) {
+    
+                width: 3.6rem;
+                height: 3.6rem;
+            }
+        }
+        
+    }
+
+    &__book {
+        border-top: .3rem solid v.$lightFontColor;
+        margin-top: 3rem;
+
+        @include m.device(v.$LDesktop) {
+            min-width: 15rem;
+            all: unset;
+            // border-top: none;
+            border-left: .3rem solid v.$lightFontColor;
+            padding-left: 2rem;
+            margin-block: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
     }
 
-    &__paragraph {
-        font-size: 1.3rem;
-            font-weight: 700;
-            &-span {
-            display: block;
-            background-color: v.$darkFontColor;
-            color: v.$lightFontColor;
-            text-transform: uppercase;
-            border-radius: .3rem;
-            padding-inline: 1rem;
+    &__price {
+        display: block;
+        text-align: center;
+        // margin-top: 3rem;
+        font-weight: 700;
+        font-size: 2rem;
 
-            @include m.scheme() {
-                background-color: v.$lightFontColor;
-                color: v.$darkFontColor;
-            }
-    }
+        &-number {
+            font-size: 3rem;
+        }
     }
 
-    &__info {
-        padding: 2rem;
+    &__bottons {
+        // margin-top: 2rem;
+        display: flex;
+        flex-direction: column
     }
 
     &__button {
-            @include m.button(v.$darkFontColor, v.$lightFontColor);
-        width: 100%;
+        @include m.button(v.$lightFontColor, white);
 
-        @include m.scheme() {
-            @include m.button(v.$lightFontColor, v.$darkFontColor);
-            // @include m.button(v.$darkFontColor, v.$lightFontColor);
+        &-add {
+            @include m.button(lighten(v.$lightFontColor, 30%), white);
         }
-    }
 
-    &__title {
-        font-size: 2.2rem;
+        &-more {
+            @include m.button(lighten(v.$lightFontColor, 30%), white);
+            width: 30rem;
+            margin: 3rem auto 0;
+
+
+            @include m.device(v.$desktop) {
+                margin-left: 0;
+            }
+
+        }
     }
 }

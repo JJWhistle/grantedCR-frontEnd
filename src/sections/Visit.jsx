@@ -1,4 +1,4 @@
-import Tour from '../components/Tour';
+import HomeTour from '../components/HomeTour';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 
@@ -14,7 +14,7 @@ const Visit = ({tours, loadingTours}) => {
                     <div className='visit__content'>
                         <div className='visit__flex'>
                             {tours.map(tour => (
-                                <Tour 
+                                <HomeTour 
                                     key={tour._id}
                                     tour={tour}
                                     loadingTours={loadingTours}

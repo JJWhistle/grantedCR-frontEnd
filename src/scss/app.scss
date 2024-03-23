@@ -8,7 +8,7 @@
 @use 'UI/visit';
 @use 'UI/live';
 @use 'UI/home-property';
-@use 'UI/tour';
+@use 'UI/home-tour';
 @use 'UI/featured';
 @use 'UI/trust';
 @use 'UI/secundaryHeader';
@@ -19,3 +19,6 @@
 @use 'UI/slider';
 @use 'UI/real-estate-property';
 @use 'UI/card';
+@use 'UI/tours';
+@use 'UI/tour';
+@use 'UI/calendar';
