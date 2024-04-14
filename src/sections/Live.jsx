@@ -5,9 +5,15 @@ import FeaturedProperty from '../components/FeaturedProperty';
 
 const Live = ({properties, loadingProperties}) => {
   
-  const mostExpensiveItem = properties.reduce((maxItem, currentItem) => {
-    return currentItem.price > maxItem.price ? currentItem : maxItem;
-  }, properties[0]);
+  const mostExpensiveItem = properties.reduce((maxItem, currentItem) =>  currentItem.price > maxItem.price ? currentItem : maxItem, properties[0]);
+
+  // const mostExpensiveItem = properties.reduce((maxItem, currentItem) => {
+  //   if (currentItem.exclusive && currentItem.price > maxItem.price) {
+  //     return currentItem;
+  //   } else {
+  //     return maxItem;
+  //   }
+  // }, properties.find(item => item.exclusive) || null);
 
   // const newProperties = properties.filter(properties => properties !== mostExpensiveItem);
   

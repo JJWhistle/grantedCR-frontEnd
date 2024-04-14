@@ -2,5 +2,6 @@
 @use 'base/mixins' as m;
 
 .calendar {
-    height: 60rem;
+    height: 100%;
+    width: 100%;
 }

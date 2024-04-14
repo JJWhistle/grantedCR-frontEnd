@@ -11,23 +11,23 @@ const SecundaryHeader = () => {
   const {pageParams, id} = params;
 
 
-  useEffect(() => {
-    const getPage = async () => {
-      try {
-        const {data} = await pageAxios(`/${pageParams}`);
+  // useEffect(() => {
+  //   const getPage = async () => {
+  //     try {
+  //       const {data} = await pageAxios(`/${pageParams}`);
 
-        setPage(data[0]);
+  //       setPage(data[0]);
         
-      } catch (error) {
-        console.log(error);
-      }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
 
-      setLoading(false);
-    }
+  //     setLoading(false);
+  //   }
 
 
-    getPage();
-  }, [pageParams])
+  //   getPage();
+  // }, [pageParams])
   
 
   return (

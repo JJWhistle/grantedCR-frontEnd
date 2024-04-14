@@ -61,6 +61,9 @@ const Tour = ({tour, loadingTours}) => {
 
 
             <Link to={`${tour._id}`} className="tour__button tour__button-more">More Details</Link>
+            <div className="tour__calendar">
+              {/* <BookCalendar /> */}
+            </div>
           </div>
 
           <div className="tour__book">
@@ -79,7 +82,6 @@ const Tour = ({tour, loadingTours}) => {
         </div>
 
       </div>
-        <BookCalendar />
     </>
   )
 }

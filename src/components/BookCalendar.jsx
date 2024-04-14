@@ -15,8 +15,6 @@ const BookCalendar = ({object}) => {
     }
   ]
 
-  console.log(events);
-
 
   return (
     <>
