@@ -1,6 +1,6 @@
 import Partnership from "../assets/icons/Partnership"
 import Service from "../assets/icons/Service"
-import Local from "../assets/icons/local"
+import Local from "../assets/icons/Local"
 
 const Trust = () => {
   return (
