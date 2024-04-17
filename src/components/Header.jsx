@@ -6,9 +6,11 @@ const Header = () => {
     <header className="header">
       <div className="header__content">
         <Bar />
-          <video className="header__background" loop muted autoPlay="autoplay">
+          {/* <video className="header__background" loop muted autoPlay="autoplay">
             <source src="https://res.cloudinary.com/dwtmwtnpb/video/upload/v1697165305/Header/onkuu1ginl4qi3lph9un.mp4" type="video/mp4" />
-          </video>
+          </video> */}
+
+          <img src="local.png" alt="" />
         
         <div className="header__flex">
           <div className="header__container">

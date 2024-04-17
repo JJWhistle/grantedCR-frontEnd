@@ -26,7 +26,7 @@ const Visit = ({tours, loadingTours}) => {
 
 
                     <div className="visit__grid">
-                        <img className="visit__image" loading="lazy" src="https://res.cloudinary.com/dwtmwtnpb/image/upload/v1696977619/tours/rafting2_xsrvof.jpg"/>
+                        <img className="visit__image" loading="lazy" src="partnership.png"/>
                         
                         <div className="visit__column">
                             <h3>Tours in Costa Rica</h3>
@@ -36,7 +36,7 @@ const Visit = ({tours, loadingTours}) => {
                             <Link to ={'/tours'} className="button button-left">Book now!</Link>
                         </div>
                         
-                        <img className="visit__image" loading="lazy" src="https://res.cloudinary.com/dwtmwtnpb/image/upload/v1697253513/GrantedCR%20Rentals/c28viznkreno3azbm3qm.jpg"/>
+                        <img className="visit__image" loading="lazy" src="service.png"/>
                         
                         <div className="visit__column visit__column-left">
                             <h3>Rentals in Costa Rica</h3>
