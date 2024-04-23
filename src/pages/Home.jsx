@@ -43,11 +43,9 @@ const Home = () => {
   
   }, []);
 
-  console.log(import.meta.env.VITE_BACKEND_URL)
-
   return (
     <>
-      {console.log("Constructed URL:", `${import.meta.env.VITE_BACKEND_URL}/api/public-properties`)}
+      {console.log(`Environment: ${import.meta.env.VITE_BACKEND_URL}`)}
       {
         tours.length > 0 &&
         <Visit
