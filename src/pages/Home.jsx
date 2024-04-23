@@ -28,7 +28,6 @@ const Home = () => {
     const getProperties = async () => {
       try {
         const {data} = await clienteAxios('/public-properties');
-        console.log("Constructed URL:", `${import.meta.env.VITE_BACKEND_URL}/api/public-properties`);
 
         setProperties(data);      
       } catch (error) {
@@ -47,6 +46,7 @@ const Home = () => {
 
   return (
     <>
+      {console.log("Constructed URL:", `${import.meta.env.VITE_BACKEND_URL}/api/public-properties`)}
       {
         tours.length > 0 &&
         <Visit
