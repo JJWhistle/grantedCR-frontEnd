@@ -1,13 +1,11 @@
 import '../build/css/app.css';
-import {BrowserRouter, Routes, Route, Outlet} from 'react-router-dom';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 import MainLayout from './layout/MainLayout';
 import ClientLayout from './layout/ClientLayout';
 
 import Home from './pages/Home';
 import RealEstateProperty from './pages/RealEstateProperty';
-
-import RealEstate from './pages/RealEstate';
 
 import CurrentPage from './pages/CurrentPage';
 

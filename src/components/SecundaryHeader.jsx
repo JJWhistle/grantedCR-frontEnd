@@ -1,6 +1,5 @@
 import Bar from './Bar';
-import { useEffect, useState } from "react";
-import {clienteAxios, pageAxios} from "../config/axios";
+import { useState } from "react";
 import {useParams} from 'react-router-dom';
 
 
