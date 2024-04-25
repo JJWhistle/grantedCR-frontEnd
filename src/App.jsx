@@ -5,9 +5,9 @@ import MainLayout from './layout/MainLayout';
 import ClientLayout from './layout/ClientLayout';
 
 import Home from './pages/Home';
+import RealEstate from './pages/RealEstate';
 import RealEstateProperty from './pages/RealEstateProperty';
-
-import CurrentPage from './pages/CurrentPage';
+import Tours from './pages/Tours';
 
 function App() {
 
@@ -25,8 +25,8 @@ function App() {
         {/* TEST! */}
 
         <Route path='/' element={<ClientLayout />}>
-          <Route path='/:pageParams' element={<CurrentPage />} />
-          <Route path='/:pageParams/:id' element={<RealEstateProperty />} />
+          <Route path='real-estate' element={<RealEstate />} />
+          <Route path='tours' element={<Tours />} />
         </Route>
 
         

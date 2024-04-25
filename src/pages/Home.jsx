@@ -45,7 +45,6 @@ const Home = () => {
 
   return (
     <>
-      {console.log(`Environment: ${import.meta.env.VITE_BACKEND_URL}`)}
       {
         tours.length > 0 &&
         <Visit
