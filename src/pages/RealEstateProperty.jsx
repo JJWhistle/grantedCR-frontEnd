@@ -38,9 +38,7 @@ const RealEstateProperty = () => {
     }, [])
 
   return (
-    <>
-        <Bar />
-        
+    <>        
         {loading ? 'Loading...' :
         
             <>

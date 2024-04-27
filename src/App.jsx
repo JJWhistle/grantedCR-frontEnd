@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import RealEstate from './pages/RealEstate';
 import RealEstateProperty from './pages/RealEstateProperty';
 import Tours from './pages/Tours';
+import Tour from './pages/Tour';
 
 function App() {
 
@@ -18,6 +19,8 @@ function App() {
         
         <Route path='/' element={<MainLayout />}>
           <Route index element={<Home/>} />
+          <Route path='real-estate' element={<RealEstate />} />
+          <Route path='tours' element={<Tours />} />
         </Route>
 
 
@@ -25,14 +28,10 @@ function App() {
         {/* TEST! */}
 
         <Route path='/' element={<ClientLayout />}>
-          <Route path='real-estate' element={<RealEstate />} />
-          <Route path='tours' element={<Tours />} />
+          <Route path='real-estate/:id' element={<RealEstateProperty />} />
+          <Route path='tours/:id' element={<Tour />} />
         </Route>
-
         
-        {/* Correct way or at least the one that's working... */}
-        {/* <Route path='/:pageParams' element={<ClientLayout />} />
-        <Route path='real-estate/:id' element={<RealEstateProperty />} /> */}
       </Routes>
     </BrowserRouter>
     </>
