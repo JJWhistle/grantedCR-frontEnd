@@ -38,8 +38,6 @@ const Header = () => {
 
   return (
   <>
-
-  {console.log(currentPageMedia)}
     <header className="header">
       <div className="header__content">
         <Bar />
