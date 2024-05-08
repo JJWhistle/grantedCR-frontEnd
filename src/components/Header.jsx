@@ -42,7 +42,7 @@ const Header = () => {
       <div className="header__content">
         <Bar />
 
-        <video className="header__background" autoPlay muted loop  src={currentPageMedia}>
+        <video className="header__background" preload="none" autoPlay muted loop playsInline src={currentPageMedia}>
           {/* <source src={currentPageMedia}/> */}
         </video>
         
