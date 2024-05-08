@@ -2,18 +2,6 @@
 @use 'base/mixins' as m;
 
 .slider {
-    // position: fixed;
-    // top: 0;
-    // left: 0;
-    // bottom: 0;
-    // right: 0;
-    // z-index: 1000000;
-    // width: 100%;
-    // height: 100%;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // background-color: transparentize(v.$dark, .5);
     margin-bottom: 2rem;
 
     &__graphic {
@@ -24,7 +12,7 @@
     &__image {
         max-height: 100%;
         border-radius: .5rem;
-        height: 100%;
+        // height: 100%;
 
         @include m.device(v.$XLDesktop) {
             // width: 200rem;

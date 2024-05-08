@@ -6,57 +6,47 @@ import {clienteAxios} from "../config/axios";
 
 const Header = () => {
   const location = useLocation();
-  const path = location.pathname
+  const path = location.pathname.split('/')[1];
   const [currentPageMedia, setCurrentPageMedia] = useState([]);
 
   useEffect(() => {
     const getPageDetails = async () => {
       const {data} = await clienteAxios('/page');
-      const currentPageData = data.find(([header, value]) => path.includes(header[0]))
 
-      console.log(currentPageData);
+      // Define a mapping of page types to their corresponding media keys
+      const pageMediaMap = {
+        'real-estate': ['realEstateVideo', 'realEstateImages'],
+        'tours': ['tourVideo', 'tourImages'],
+        '' : ['mainVideo', 'mainImages']
+      };
 
-
-      if (currentPageData) {
-        // If media data is found for the current page, set it as the current page media
-        setCurrentPageMedia(currentPageData[1]);
-      } else {
-        // If no media data is found for the current page, set an empty array
-        setCurrentPageMedia([]);
+      // Find the relevant media based on the path
+      let mediaToShow = [];
+      const mediaKeys = pageMediaMap[path]; // Get the corresponding media keys for the page type
+      if (mediaKeys) {
+        // Find the media data for the page type
+        const pageMediaData = data.find(([key]) => mediaKeys.includes(key));
+        if (pageMediaData) {
+          mediaToShow = pageMediaData[1]; // Get the corresponding media array
+        }
       }
+
+      setCurrentPageMedia(mediaToShow);
     }
     getPageDetails();
   }, [path])
 
-
-
-
-  const renderMedia = () => {
-    if (currentPageMedia.mainVideo && currentPageMedia.mainVideo.length > 0) {
-      // If there is a mainVideo for the current page, render it
-      console.log(currentPageMedia.mainVideo[0]);
-      return <video src={currentPageMedia.mainVideo[0]} controls />;
-    } else if (currentPageMedia.mainImages && currentPageMedia.mainImages.length > 0) {
-      // If there are mainImages for the current page, render them
-      return currentPageMedia.mainImages.map((image, index) => (
-        <img key={index} src={image} alt={`Image ${index}`} />
-      ));
-    } else {
-      // If there are no mainVideo or mainImages for the current page, render a message or default content
-      return <p>No media available for this page.</p>;
-    }
-  };
-
-
   return (
   <>
 
-  {currentPageMedia}
+  {console.log(currentPageMedia)}
     <header className="header">
       <div className="header__content">
         <Bar />
-        
-        {renderMedia()}
+
+        <video className="header__background" autoPlay muted loop  src={currentPageMedia}>
+          {/* <source src={currentPageMedia}/> */}
+        </video>
         
         <div className="header__flex">
           <div className="header__container">

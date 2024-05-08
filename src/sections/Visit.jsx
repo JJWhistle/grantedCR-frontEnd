@@ -30,8 +30,7 @@ const Visit = ({tours, loadingTours}) => {
                         
                         <div className="visit__column">
                             <h3>Tours in Costa Rica</h3>
-                            <p> Costa Rica is one of the best destinations for tourism in the world! With Granted Costa Rica, you will go to the best places to enjoy paradise at it's finest. <br/>
-                            Come Grant Access to an unique expirience. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur labore numquam quidem enim illo et debitis. Saepe assumenda excepturi quam, at soluta cumque ad ipsum aliquam, officiis eum exercitationem quisquam. Aperiam, temporibus. Quibusdam iusto saepe similique odit quas, recusandae molestias!
+                            <p> Well known for its stunning natural beauty, is a hotspot for eco-tourism. With diverse ecosystems ranging from rainforests to beaches, the country offers a wealth of experiences. Tours are essential for visitors, providing opportunities to explore national parks, engage in adventure activities like zip-lining and snorkeling, and immerse in local culture. Costa Rica's commitment to sustainability ensures that tours not only showcase its natural wonders but also contribute to conservation efforts and support local communities.
                             </p>
                             <Link to ={'/tours'} className="button button-left">Book now!</Link>
                         </div>
@@ -40,8 +39,7 @@ const Visit = ({tours, loadingTours}) => {
                         
                         <div className="visit__column visit__column-left">
                             <h3>Rentals in Costa Rica</h3>
-                            <p> Costa Rica is one of the best destinations for tourism in the world! With Granted Costa Rica, you will go to the best places to enjoy paradise at it's finest. <br/>
-                            Come Grant Access to an unique expirience with Granted Costa Rica. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur labore numquam quidem enim illo et debitis. Saepe assumenda excepturi quam, at soluta cumque ad ipsum aliquam, officiis eum exercitationem quisquam. Aperiam, temporibus. Quibusdam iusto saepe similique odit quas, recusandae molestias!
+                            <p> Find seamless options for accommodations. With options ranging from eco-lodges nestled in the heart of nature to beachfront villas offering panoramic views. This blend of immersive experiences and convenient accommodations makes Costa Rica an ideal destination for eco-conscious travelers seeking adventure and relaxation alike.
                             </p>
                             <Link to ={'/rentals'} className="button button-left">View more</Link>
                         </div>
