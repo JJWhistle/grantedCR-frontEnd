@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 
 import Tour from '../components/Tour'
 
+import BookCalendar from '../components/BookCalendar';
+
 
 
 const Tours = () => {
@@ -18,9 +20,9 @@ const Tours = () => {
       } catch (error) {
         console.log(error);
       }
+      setLoading(false);
     }
 
-    setLoading(false);
 
     getTours();
   }, [])
@@ -33,10 +35,18 @@ const Tours = () => {
 
             <div className="tours__grid">
               {tours.map(tour => (
-                <Tour
-                  key={tour._id} 
-                  tour={tour}
-                  loadingTours={loading}/>
+                <div className="tour__content" key={tour._id}>
+                  <Tour
+                    tour={tour}
+                    loadingTours={loading}
+                  />
+
+                  <div className="tour__calendar">
+                    <BookCalendar key={tour._id}/>
+                  </div>
+                  
+                </div>
+                  
               ))}
             </div>
           </div>

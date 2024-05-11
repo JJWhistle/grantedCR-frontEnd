@@ -2,178 +2,69 @@
 @use 'base/mixins' as m;
 
 .tour {
+    border: .1rem solid transparentize(v.$light, .7);
     border-radius: .5rem;
-    width: 100%;
-    position: relative;
+    overflow: hidden;
+
+    &__content {
+        
+        @include m.device(v.$LDesktop) {
+            display: grid;
+            grid-template-columns: repeat(1, 85rem 30rem);
+            justify-content: space-between;
+        }
+    }
     
     @include m.device(v.$desktop) {
+        height: 45rem;
         display: flex;
-        gap: 2rem;
     }
-    
-    @include m.device(v.$LDesktop) {
-        // height: 40rem;
-        // max-height: 45rem;
-    }
+
 
     &__graphic {
-        position: relative;
-        height: max-content;
-        max-width: 50rem;
-    }
-    
-    &__image {
-        aspect-ratio: 16/14;
-        // height: 100%;
-        
-        @include m.device(v.$tablet) {
-            max-width: 100%;
-        }
-    }
-
-    &__flex {
-        @include m.device(v.$LDesktop) {
-            display: flex;
-            gap: 2rem;
-            width: 100%;
-        }
-    }
-
-    &__details {
-        margin-top: 2rem;
-
-        @include m.device(v.$desktop) {
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            // max-width: 40rem;
-        }
-
-    }
-
-    &__desc {
-        // max-height: 12rem;
-        overflow: auto;
-
-    }
-
-    &__icons {
-        margin-bottom: 3rem;
-    }
-
-    &__icon {
         display: flex;
-        align-items: flex-end;
-        gap: 1.2rem;
+        flex-grow: 2;
+        position: relative;
+        overflow: hidden;
+        
+        @include m.device(v.$desktop) {
+            min-width: 35rem;
+            width: 35rem;
+        }
+    }
+
+    &__image {
+        aspect-ratio: 16/9;
+        @include m.device(v.$desktop) {
+            aspect-ratio: unset;
+        }
     }
 
     &__btn {
         all: unset;
-        transition: background-color .1s ease-in-out;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: block;
         position: absolute;
         top: 50%;
         transform: translate(0, -50%);
-        padding: 1rem;
-        cursor: pointer;
-        border-radius: 100%;
-        background-color: transparentize(black, .5);
+        padding: 4rem;
+        border-radius: 50%;
+        transition: .1s ease;
+
         &:hover {
-            background-color: transparentize(black, .2);
-            
+            background-color: transparentize(#000, .5);
         }
 
-        &:focus {
+        &:focus, &:focus-visible {
             outline: none;
         }
 
-        &:focus-visible {
-            outline: .2rem solid v.$darkFontColor;
-        }
-
-        @include m.device(v.$tablet) {
-            width: 7rem;
-            height: 7rem;
-        }
-        
-        > * {
-            stroke: white;
-            fill: white;
-            width: 2rem;
-            height: 2rem;
-            
-            
-
-            
-            @include m.device(v.$tablet) {
-    
-                width: 3.6rem;
-                height: 3.6rem;
-            }
-        }
-        
-    }
-
-    &__book {
-        border-top: .3rem solid v.$lightFontColor;
-        margin-top: 3rem;
-
-        @include m.device(v.$LDesktop) {
-            all: unset;
-            border-left: .3rem solid v.$lightFontColor;
-            padding-left: 2rem;
-            margin-block: 4rem;
-            display: flex;
-            flex-direction: column;
-            position: sticky;
-            top: 0;
+        &>* {
+            height: 3rem;
+            width: 3rem;
         }
     }
 
-    &__price {
-        display: block;
-        text-align: center;
-        // margin-top: 3rem;
-        font-weight: 700;
-        font-size: 2rem;
-
-        &-number {
-            font-size: 3rem;
-        }
-    }
-
-    &__bottons {
-        // margin-top: 2rem;
-        display: flex;
-        flex-direction: column
-    }
-
-    &__button {
-        @include m.button(v.$lightFontColor, white);
-
-        &-add {
-            @include m.button(lighten(v.$lightFontColor, 30%), white);
-        }
-
-        &-more {
-            @include m.button(lighten(v.$lightFontColor, 30%), white);
-            width: 30rem;
-            margin: 3rem auto 0;
-
-
-            @include m.device(v.$desktop) {
-                margin-left: 0;
-            }
-
-        }
-    }
-
-    &__calendar {
-        height: 40rem;
-        width: 100%;
-        margin-top: 3rem;
+    &__flex {
+        padding: 2rem;
     }
 }

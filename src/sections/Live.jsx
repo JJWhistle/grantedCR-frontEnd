@@ -1,21 +1,35 @@
-import React from 'react'
+import {clienteAxios} from "../config/axios";
+import { useState, useEffect } from "react";
+
 import { Link } from 'react-router-dom';
 import HomeProperty from "../components/HomeProperty";
 import FeaturedProperty from '../components/FeaturedProperty';
 
-const Live = ({properties, loadingProperties}) => {
+const Live = () => {
+  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    
+
+    const getProperties = async () => {
+      try {
+        const {data} = await clienteAxios('/public-properties');
+
+        setProperties(data);      
+      } catch (error) {
+        console.log(error);
+      }
+      
+      setLoading(false);
+    
+    };
+    getProperties();
+  
+  }, []);
   
   const mostExpensiveItem = properties.reduce((maxItem, currentItem) =>  currentItem.price > maxItem.price ? currentItem : maxItem, properties[0]);
 
-  // const mostExpensiveItem = properties.reduce((maxItem, currentItem) => {
-  //   if (currentItem.exclusive && currentItem.price > maxItem.price) {
-  //     return currentItem;
-  //   } else {
-  //     return maxItem;
-  //   }
-  // }, properties.find(item => item.exclusive) || null);
-
-  // const newProperties = properties.filter(properties => properties !== mostExpensiveItem);
   
   const newProperties = properties.filter(properties => properties !== mostExpensiveItem);
   const displayNewProperties = newProperties.slice(0, 6);
@@ -23,34 +37,34 @@ const Live = ({properties, loadingProperties}) => {
   
   return (
     <>
-    <section className="live">
-    <div className="live__container">
-      <div className="live__wrapper">
-        <h2 className='live__heading'>Live in Paradise <span className='visit__span'>Look for your dream house and enjoy the Pura Vida Lifestyle</span></h2>
+      <section className="live">
+        <div className="live__container">
+          <div className="live__wrapper">
+            <h2 className='live__heading'>Live in Paradise <span className='visit__span'>Look for your dream house and enjoy the Pura Vida Lifestyle</span></h2>
 
-        <div className="live__grid">
+            <div className="live__grid">
 
-          {displayNewProperties.map(property => (
-              <HomeProperty
-                key={property._id}
-                property={property}
-              />
-            ))}
+              {loading ? <p>Loading...</p> : displayNewProperties.map(property => (
+                  <HomeProperty
+                    key={property._id}
+                    property={property}
+                  />
+                ))}
 
+            </div>
+
+            <Link to={'/real-estate'} className="button button-center">View All</Link>
+
+          </div>
         </div>
 
-        <Link to={'/real-estate'} className="button button-center">View All</Link>
-
-      </div>
-    </div>
 
 
-
-      <div className="live__featured">
-        <FeaturedProperty
-          mostExpensiveItem={mostExpensiveItem} />
-      </div>
-  </section>
+          <div className="live__featured">
+            {loading ? <p>Loading...</p> : <FeaturedProperty
+              mostExpensiveItem={mostExpensiveItem} />}
+          </div>
+      </section>
     </>
   )
 }

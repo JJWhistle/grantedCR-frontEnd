@@ -8,33 +8,47 @@ const Header = () => {
   const location = useLocation();
   const path = location.pathname.split('/')[1];
   const [currentPageMedia, setCurrentPageMedia] = useState([]);
+  const [page, setPage] = useState([])
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getPageDetails = async () => {
       const {data} = await clienteAxios('/page');
+      setPage(data);
 
-      // Define a mapping of page types to their corresponding media keys
+      setLoading(false);
+
+    }
+    getPageDetails();
+  }, [])
+
+
+  useEffect(() => {
+    const setMedia = () => {
+
+        // Define a mapping of page types to their corresponding media keys
       const pageMediaMap = {
         'real-estate': ['realEstateVideo', 'realEstateImages'],
         'tours': ['tourVideo', 'tourImages'],
         '' : ['mainVideo', 'mainImages']
       };
-
+  
       // Find the relevant media based on the path
       let mediaToShow = [];
       const mediaKeys = pageMediaMap[path]; // Get the corresponding media keys for the page type
       if (mediaKeys) {
         // Find the media data for the page type
-        const pageMediaData = data.find(([key]) => mediaKeys.includes(key));
+        const pageMediaData = page.find(([key]) => mediaKeys.includes(key));
         if (pageMediaData) {
+          setCurrentPageMedia(pageMediaData[1])
           mediaToShow = pageMediaData[1]; // Get the corresponding media array
         }
       }
 
-      setCurrentPageMedia(mediaToShow);
     }
-    getPageDetails();
-  }, [path])
+
+    setMedia();
+  }, [path, page])
 
   return (
   <>
@@ -42,9 +56,7 @@ const Header = () => {
       <div className="header__content">
         <Bar />
 
-        <video className="header__background" autoPlay muted loop playsInline src={currentPageMedia}>
-          {/* <source src={currentPageMedia}/> */}
-        </video>
+        {loading ? 'spinner' : <video className="header__background" src={currentPageMedia} autoPlay muted loop playsInline></video>}
         
         <div className="header__flex">
           <div className="header__container">

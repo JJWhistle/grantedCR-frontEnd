@@ -9,7 +9,6 @@ const FeaturedProperty = ({mostExpensiveItem}) => {
     
     return (
     <>
-    
         {mostExpensiveItem && <div className="featured">
                 <img className="featured__image" src={mostExpensiveItem.imageUrls[0]} alt="Featured Property" />
                 <div className="featured__info">

@@ -2,14 +2,13 @@ import { useState } from "react";
 import {Link} from "react-router-dom";
 import { SlArrowLeft, SlArrowRight  } from "react-icons/sl";
 import { NumericFormat } from "react-number-format";
-import BookCalendar from './BookCalendar';
 
 
 import User from "../assets/icons/User";
 import Users from "../assets/icons/Users";
 
 
-const Tour = ({tour, loadingTours}) => {
+const Tour = ({tour}) => {
   const [imageIndex, setImageIndex] = useState(0);
   const showPrevImage = () => {
     setImageIndex(index => {
@@ -33,7 +32,10 @@ const Tour = ({tour, loadingTours}) => {
     <>
       <div className="tour">
         <div className="tour__graphic">
-          <img src={`${tour.imageUrls[imageIndex]}`} className="tour__image" alt= {`${tour.title} Image Number ${imageIndex + 1}`} />
+          {tour.imageUrls.map(image => (
+            <img key={image} className="tour__image" src={image} alt="image" />
+          ))}
+          {/* <img src={`${tour.imageUrls[imageIndex]}`} className="tour__image" alt= {`${tour.title} Image Number ${imageIndex + 1}`} /> */}
           <button onClick={showPrevImage} className="tour__btn" style={{left:'0'}}><SlArrowLeft /></button>
           <button onClick={showNextImage} className="tour__btn" style={{right:'0'}}><SlArrowRight /></button>
         </div>
@@ -62,7 +64,6 @@ const Tour = ({tour, loadingTours}) => {
 
             <Link to={`${tour._id}`} className="tour__button tour__button-more">More Details</Link>
             <div className="tour__calendar">
-              {/* <BookCalendar /> */}
             </div>
           </div>
 
