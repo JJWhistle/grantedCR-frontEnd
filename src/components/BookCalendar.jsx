@@ -7,13 +7,6 @@ import dayjs from 'dayjs';
 const BookCalendar = ({object}) => {
   const localizer = dayjsLocalizer(dayjs);
 
-  const events = [
-    {
-      title: 'Test',
-      start: dayjs('2024-3-23T8:30').toDate(),
-      end: dayjs('2024-3-23T15:30').toDate()
-    }
-  ]
 
 
   return (
