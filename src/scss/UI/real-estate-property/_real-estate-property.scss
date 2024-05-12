@@ -119,6 +119,7 @@
 
     &__image {
         width: 15rem;  // Fixed width for each image
+        aspect-ratio: 16/9;
     }
 
     &__btn {

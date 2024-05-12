@@ -33,7 +33,7 @@ const Tour = ({tour}) => {
       <div className="tour">
         <div className="tour__graphic">
           {tour.imageUrls.map(image => (
-            <img key={image} className="tour__image" src={image} alt="image" />
+            <img key={image} className="tour__image" src={image} alt="image" style={{translate: `${-100 * imageIndex}%`}} />
           ))}
           {/* <img src={`${tour.imageUrls[imageIndex]}`} className="tour__image" alt= {`${tour.title} Image Number ${imageIndex + 1}`} /> */}
           <button onClick={showPrevImage} className="tour__btn" style={{left:'0'}}><SlArrowLeft /></button>
