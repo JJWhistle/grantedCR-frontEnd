@@ -22,14 +22,14 @@ const HomeProperty = ({property}) => {
                     {property.bedrooms && 
                         <span className="home-property__icon">
                             <BedLogo />
-                            <p className='home-property__text'>{property.bedrooms > 1 ? `${property.bedrooms} Beds` : `${property.bedrooms} Bed`}</p>
+                            <p className='home-property__text'>{property.bedrooms > 1 ? `${property.bedrooms} Bed` : `${property.bedrooms} Bed`}</p>
                         </span>
                     }
 
                     {property.bathrooms &&
                         <span className="home-property__icon">
                             <BathLogo />
-                            <p className='home-property__text'>{property.bathrooms > 1 ? `${property.bathrooms} Toilets` : `${property.bathrooms} Toilet`}</p>
+                            <p className='home-property__text'>{property.bathrooms > 1 ? `${property.bathrooms} Bath` : `${property.bathrooms} Toilet`}</p>
                     </span>
                     }
                         
