@@ -47,7 +47,7 @@ const Visit = () => {
             
             <div className="visit__grid">
               
-              <img className="visit__image" loading="lazy" src="" alt='one image'/>
+              <img className="visit__image" loading="lazy" src="tour.jpg" alt='tour image'/>
               
               <div className="visit__column">
                 <h3>Tours in Costa Rica</h3>
@@ -57,7 +57,7 @@ const Visit = () => {
                 
               </div>
               
-              <img className="visit__image" loading="lazy" src="" alt='one image'/>
+              <img className="visit__image" loading="lazy" src="rental.jpg" alt='rental image'/>
               
               <div className="visit__column visit__column-left">
                 <h3>Rentals in Costa Rica</h3>

@@ -30,7 +30,8 @@ const Bar = () => {
             <div className="bar__wrapper">
                 <div className='bar__flex'>
                     <Link to={'/'} className='bar__link'>
-                        <Logo scrolled={scrolled} />
+                        <h2 style={{margin: '0'}}>Granted Costa Rica</h2>
+                        {/* <Logo scrolled={scrolled} /> */}
                     </Link>
                         
                     <nav className={`navBar ${showNav && 'showNav'}`}>
