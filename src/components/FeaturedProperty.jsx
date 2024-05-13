@@ -21,11 +21,11 @@ const FeaturedProperty = ({mostExpensiveItem}) => {
                                 
                                 <div className="featured__details">
                                     <span className='featured__icon'>
-                                        <BedLogo /> <p className='featured__text'>{`${mostExpensiveItem.bedrooms} Beds`}</p>
+                                        <BedLogo /> <p className='featured__text'>{`${mostExpensiveItem.bedrooms} Bed`}</p>
                                     </span>
                                     
                                     <span className='featured__icon'>
-                                        <BathLogo /> <p className='featured__text'>{`${mostExpensiveItem.bathrooms} Toilets`}</p>
+                                        <BathLogo /> <p className='featured__text'>{`${mostExpensiveItem.bathrooms} Bath`}</p>
                                     </span>
                                     
                                     <span className='featured__icon'>
