@@ -26,8 +26,8 @@ const Property = ({property}) => {
               </div>
             
               <div className="property__aspects">
-                {property.bedrooms && <div className="property__aspect"><BedLogo /> <p className="property__aspect property__aspect-text">{property.bedrooms} Beds</p></div>}
-                {property.bathrooms && <div className="property__aspect"><BathLogo /> <p className="property__aspect property__aspect-text">{property.bathrooms} Toilets</p></div> }
+                {property.bedrooms && <div className="property__aspect"><BedLogo /> <p className="property__aspect property__aspect-text">{property.bedrooms} Bed</p></div>}
+                {property.bathrooms && <div className="property__aspect"><BathLogo /> <p className="property__aspect property__aspect-text">{property.bathrooms} Bath</p></div> }
               </div>
 
             
