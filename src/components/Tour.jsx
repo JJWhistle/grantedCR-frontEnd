@@ -57,29 +57,18 @@ const Tour = ({tour}) => {
             </div>
 
             <div className="tour__desc">
-              <p className="tour__text">{tour.description}</p>
+              <p className="tour__text">{tour.description.length > 300 ? tour.description.substr(0, 300) + '...' : tour.description}</p>
 
             </div>
+            
+            <div className="tour__book">
+              <p className="tour__price"> From <NumericFormat className='tour__price tour__price-number' value={tour.price.toFixed(2)} displayType={'text'}   thousandSeparator={true} prefix={'$'} /></p>
 
+            </div>
+            
+            </div>
 
             <Link to={`${tour._id}`} className="tour__button tour__button-more">More Details</Link>
-            <div className="tour__calendar">
-            </div>
-          </div>
-
-          <div className="tour__book">
-              <p className="tour__price">
-                From
-                <NumericFormat className='tour__price tour__price-number' value={tour.price.toFixed(2)} displayType={'text'}   thousandSeparator={true} prefix={'$'} />
-
-              </p>
-              
-              <div className="tour__bottons">
-                <button className="tour__button tour__button-add">Add to Cart</button>
-                <Link to={`book/${tour._id}`} className="tour__button">Book Now</Link>
-              </div>
-
-            </div>
         </div>
 
       </div>
