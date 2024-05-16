@@ -21,7 +21,7 @@ const RealEstateProperty = () => {
     const [agent, setAgent] = useState({});
     const [imageIndex, setImageIndex] = useState(0);
     
-    useEffect(() =>{
+    useEffect( () => {
         const getProperty = async () => {
             try {
                 const {data} = await clienteAxios(`/public-properties/${id}`);
@@ -33,24 +33,31 @@ const RealEstateProperty = () => {
 
             setLoadingProperty(false);
         }
-
-        if(!loadingProperty) {
-            const getAgent = async () => {
-                try {
-                        const {data} = await clienteAxios(`/public-properties/agent/${property.agent}`);
-                        setAgent(data);
-                } catch (error) {
-                    console.log(`Error! could not get agent: ${error}`);
-                }
-    
-                setLoadingAgent(false);
-            }
-
-            getAgent();
-        }
+        
         
         getProperty()
-    }, [loadingProperty, loadingAgent])
+    }, [])
+
+
+    useEffect(() => {
+
+            const getAgent = async (propertyToAgent) => {
+
+                if (Object.keys(propertyToAgent).length > 0) {
+                    try {
+                        const {data} = await clienteAxios(`/public-properties/agent/${propertyToAgent.agent}`);
+                        setAgent(data);
+                    } catch (error) {
+                        console.log(`Error! could not get agent: ${error}`);
+                    }
+            
+                    setLoadingAgent(false);
+                }
+                
+            }
+    
+            getAgent(property);
+    }, [property])
 
   return (
     <>

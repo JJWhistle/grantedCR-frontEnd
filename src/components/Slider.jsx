@@ -27,15 +27,17 @@ const Slider = ({object, imageIndex, setImageIndex}) => {
     <>
       <div className="slider">
         <div className="slider__content">
-          <div className="slider__graphic">
-          {imageUrls && imageUrls.map(image => (
-              <img key={image} loading="lazy" className="slider__image" src={image} alt={`${title} Photo ${imageIndex}`} style={{translate: `${-100 * imageIndex}%`}} />
-          ))}
-            
+            {imageUrls && imageUrls.map(image => (
+              <div className="slider__graphic" key={image}>
+                <img loading="lazy" className="slider__image" src={image} alt={`${title} Photo ${imageIndex}`} style={{translate: `${-100 * imageIndex}%`}} />
+
+              </div>
+            ))}
+              
           <button onClick={showPrevImage} className="slider__btn" style={{left:'0'}}><SlArrowLeft /></button>
           <button onClick={showNextImage} className="slider__btn" style={{right:'0'}}><SlArrowRight /></button>
-          </div>
-          </div>
+
+        </div>
       </div>
         
         
