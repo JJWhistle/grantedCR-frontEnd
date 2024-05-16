@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react";
 import { SlArrowLeft, SlArrowRight  } from "react-icons/sl";
 
-const Slider = ({object, setIsOpen, imageIndex, setImageIndex}) => {
-    const {imageUrls, title, _id} = object;
-    
+
+const Slider = ({object, imageIndex, setImageIndex}) => {
+  const {imageUrls, title, _id} = object;
     
     const showPrevImage = () => {
       setImageIndex(index => {
@@ -27,14 +28,12 @@ const Slider = ({object, setIsOpen, imageIndex, setImageIndex}) => {
       <div className="slider">
         <div className="slider__content">
           <div className="slider__graphic">
-            {imageUrls.map(image => (
+          {imageUrls && imageUrls.map(image => (
               <img key={image} loading="lazy" className="slider__image" src={image} alt={`${title} Photo ${imageIndex}`} style={{translate: `${-100 * imageIndex}%`}} />
-            ))}
-            {/* <img loading="lazy" className="slider__image" src={imageUrls[imageIndex]} alt={`${title} Photo ${imageIndex}`} /> */}
-
-            <button onClick={showPrevImage} className="slider__btn" style={{left:'0'}}><SlArrowLeft /></button>
-            <button onClick={showNextImage} className="slider__btn" style={{right:'0'}}><SlArrowRight /></button>
-            {/* <button className="slider__close-btn" onClick={closeSlider}> <SlClose /></button> */}
+          ))}
+            
+          <button onClick={showPrevImage} className="slider__btn" style={{left:'0'}}><SlArrowLeft /></button>
+          <button onClick={showNextImage} className="slider__btn" style={{right:'0'}}><SlArrowRight /></button>
           </div>
           </div>
       </div>

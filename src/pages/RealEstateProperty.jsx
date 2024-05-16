@@ -16,8 +16,9 @@ const RealEstateProperty = () => {
     const {id} = useParams();
 
     const [property, setProperty] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [isOpen, setIsOpen] = useState(false);
+    const [loadingProperty, setLoadingProperty] = useState(true);
+    const [loadingAgent, setLoadingAgent] = useState(true);
+    const [agent, setAgent] = useState({});
     const [imageIndex, setImageIndex] = useState(0);
     
     useEffect(() =>{
@@ -26,107 +27,112 @@ const RealEstateProperty = () => {
                 const {data} = await clienteAxios(`/public-properties/${id}`);
                 setProperty(data[0]);
             } catch (error) {
-                console.error(error);
+                console.error(`Error! Could not get properties: ${error}`);
             }
 
 
-            setLoading(false);
+            setLoadingProperty(false);
         }
 
+        if(!loadingProperty) {
+            const getAgent = async () => {
+                try {
+                        const {data} = await clienteAxios(`/public-properties/agent/${property.agent}`);
+                        setAgent(data);
+                } catch (error) {
+                    console.log(`Error! could not get agent: ${error}`);
+                }
+    
+                setLoadingAgent(false);
+            }
+
+            getAgent();
+        }
         
-        getProperty();
-    }, [])
+        getProperty()
+    }, [loadingProperty, loadingAgent])
 
   return (
-    <>        
-        {loading ? 'Loading...' :
-        
-            <>
-                <section className="real-estate-property">
-                    <div className="real-estate-property__container">
-                        <div className="real-estate-propertty__wrapper">
-                        <div className="real-estate-property__grid">
-                            <div className="real-estate-property__col real-estate-property__col-left">
-                                {!loading &&
-                                    <>
-                                        <Slider object={property} setIsOpen={setIsOpen} imageIndex={imageIndex} setImageIndex={setImageIndex}/>
-                                        <Galery property={property} setIsOpen={setIsOpen} setImageIndex={setImageIndex} />
-
-                                        <div className="real-estate-property__info">
-
-                                            <h1 className="real-estate-property__heading">{property.title}</h1>
-                                            <NumericFormat className='real-estate-property__price' value={property.price.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} />
-
-                                                <div className="real-estate-property__location">
-                                                    <Map />
-                                                    <p className="real-estate-property__text real-estate-property__text-price">{property.location}</p>
+    <>
+        <section className="real-estate-property">
+            <div className="real-estate-property__container">
+                <div className="real-estate-propertty__wrapper">
+                    <div className="real-estate-property__grid">
+                        <div className="real-estate-property__col real-estate-property__col-left">
+                            <Slider object={property} imageIndex={imageIndex} setImageIndex={setImageIndex}/>
+                            
+                            <Galery property={property} loadingProperty={loadingProperty} setImageIndex={setImageIndex} />
+                            
+                            <div className="real-estate-property__info">
+                                        <h1 className="real-estate-property__heading">{property.title}</h1>
+                                        {!loadingProperty && <NumericFormat className='real-estate-property__price' value={property.price.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} />}
+                                        
+                                        <div className="real-estate-property__location">
+                                            <Map />
+                                            <p className="real-estate-property__text real-estate-property__text-price">{property.location}</p>
+                                        </div>
+                                        
+                                        <div className="real-estate-property__aspects">
+                                            <div className="real-estate-property__aspect">
+                                                <p className="real-estate-property__text real-estate-property__text-smaller">Land</p>
+                                                <div className="real-estate-property__flex">
+                                                    {!loadingProperty && <NumericFormat className="real-estate-property__text" value={property.lot_size.toFixed(2)} displayType={'text'} thousandSeparator={true} suffix="m²" />}
+                                                    
+                                                    <Area />
                                                 </div>
+                                            </div>
+                                            
+                                            
+                                            {property.building && <div className="real-estate-property__aspect">
+                                                <p className="real-estate-property__text real-estate-property__text-smaller">Building</p>
                                                 
-                                                <div className="real-estate-property__aspects">
-                                                    <div className="real-estate-property__aspect">
-                                                        <p className="real-estate-property__text real-estate-property__text-smaller">Land</p>
-                                                        <div className="real-estate-property__flex">
-                                                            <NumericFormat className="real-estate-property__text" value={property.lot_size.toFixed(2)} displayType={'text'} thousandSeparator={true} suffix="m²" />
-                                                            <Area />
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    
-                                                    {property.building && <div className="real-estate-property__aspect">
-                                                        <p className="real-estate-property__text real-estate-property__text-smaller">Building</p>
-                                                        <div className="real-estate-property__flex">
-                                                            <NumericFormat className="real-estate-property__text" value={property.building.toFixed(2)} displayType={'text'} thousandSeparator={true} suffix="m²" />
-                                                            <Construction />
-                                                        </div>
+                                                <div className="real-estate-property__flex">
+                                                    <NumericFormat className="real-estate-property__text" value={property.building.toFixed(2)} displayType={'text'} thousandSeparator={true} suffix="m²" />
+                                                    <Construction />
+                                                </div>
                                                         
-                                                    </div>}
+                                            </div>}
                                                     
-                                                {property.bedrooms && <div className="real-estate-property__aspect">
-                                                    <p className="real-estate-property__text real-estate-property__text-smaller">Bedrooms</p>
+                                            {property.bedrooms && <div className="real-estate-property__aspect">
+                                                <p className="real-estate-property__text real-estate-property__text-smaller">Bedrooms</p>
 
-                                                    <div className="real-estate-property__flex">
-                                                        <p className="real-estate-property__text">{property.bedrooms}</p>
-                                                        <BedLogo />
+                                                <div className="real-estate-property__flex">
+                                                    <p className="real-estate-property__text">{property.bedrooms}</p>
+                                                    
+                                                    <BedLogo />
 
-                                                    </div>
+                                                </div>
 
-                                                </div>}
-                                                {property.bathrooms && <div className="real-estate-property__aspect">
-                                                    <p className="real-estate-property__text real-estate-property__text-smaller">Bathrooms</p>
+                                            </div>}
+                                            
+                                            {property.bathrooms && <div className="real-estate-property__aspect">
+                                                <p className="real-estate-property__text real-estate-property__text-smaller">Bathrooms</p>
 
-                                                    <div className="real-estate-property__flex">
-                                                        <p className="real-estate-property__text">{property.bathrooms}</p>
+                                                <div className="real-estate-property__flex">
+                                                    <p className="real-estate-property__text">{property.bathrooms}</p>
                                                         <BathLogo />
 
-                                                    </div>
+                                                </div>
 
-                                                </div>}
-                                            </div>
-
-
-                                            <div className="real-estate-property__description">
-                                                <p className="real-estate-property__text">{property.description}</p>
-                                            </div>
-                                            </div>
-
-                                        
-                                    
-                                    </>
-                                }
+                                            </div>}
+                                        </div>
 
 
-                            </div>
+                                        <div className="real-estate-property__description">
+                                            <p className="real-estate-property__text">{property.description}</p>
+                                    </div>
+                                 </div>
 
-                            <aside className="real-estate-property__col real-estate-property__col-right">
-                                <AgentCard property={property} loading={loading} />
-                            </aside>
+
                         </div>
+
+                        <aside className="real-estate-property__col real-estate-property__col-right">
+                            <AgentCard loadingAgent={loadingAgent} agent={agent} property={property} loadingProperty={loadingProperty} />
+                        </aside>
                     </div>
-                    </div>
-                </section>
-            </>
-        }
-        
+                </div>
+            </div>
+        </section>
     </>
   )
 }

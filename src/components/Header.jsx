@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {useLocation} from 'react-router-dom';
 
 import Bar from "./Bar";
+import Spiner from "./Spiner";
 import {clienteAxios} from "../config/axios";
 
 const Header = () => {
@@ -47,7 +48,7 @@ const Header = () => {
 
     }
 
-    setMedia();
+    Promise.all([setMedia()]);
   }, [path, page])
 
   return (
@@ -56,7 +57,7 @@ const Header = () => {
       <div className="header__content">
         <Bar />
 
-        {loading ? 'spinner' : <video className="header__background" src={currentPageMedia} autoPlay muted loop playsInline></video>}
+        {loading ? <Spiner /> : <video className="header__background" src={currentPageMedia} autoPlay muted loop playsInline></video>}
         
         <div className="header__flex">
           <div className="header__container">

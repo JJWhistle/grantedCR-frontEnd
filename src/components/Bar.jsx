@@ -20,7 +20,7 @@ const Bar = () => {
     }
   return (
     <>
-        <div className={`bar ${scrolled && 'bar-scrolled'}`}>
+        <div className={!scrolled ? 'bar' : 'bar bar-scrolled'}>
             <div className="bar__wrapper">
                 <span className='bar__icon'>
                     <img src={menu} alt="Menu Icon" onClick={() => setShowNav(!showNav)} />
@@ -30,12 +30,12 @@ const Bar = () => {
             <div className="bar__wrapper">
                 <div className='bar__flex'>
                     <Link to={'/'} className='bar__link'>
-                        <h2 style={{margin: '0'}}>Granted Costa Rica</h2>
+                        <h2 className="bar__logo" style={{margin: '0'}}>Granted Costa Rica</h2>
                         {/* <Logo scrolled={scrolled} /> */}
                     </Link>
                         
                     <nav className={`navBar ${showNav && 'showNav'}`}>
-                        <NavLink to={'/'} className={`navBar__link ${scrolled && 'navBar__link-scrolled'}`}>Home</NavLink>
+                        <NavLink to={'/'} className={'navBar__link'}>Home</NavLink>
                         <NavLink to={'/tours'} className={`navBar__link ${scrolled && 'navBar__link-scrolled'}`}>Tours</NavLink>
                         <NavLink to={'/real-estate'} className={`navBar__link ${scrolled && 'navBar__link-scrolled'}`}>Real Estate</NavLink>
                     </nav>

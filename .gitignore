@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 src/scss/
+build/css/app.css.map
 node_modules
 .env
 dist
