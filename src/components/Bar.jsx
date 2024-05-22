@@ -35,9 +35,9 @@ const Bar = () => {
                     </Link>
                         
                     <nav className={`navBar ${showNav && 'showNav'}`}>
-                        <NavLink to={'/'} className={'navBar__link'}>Home</NavLink>
-                        <NavLink to={'/tours'} className={`navBar__link ${scrolled && 'navBar__link-scrolled'}`}>Tours</NavLink>
-                        <NavLink to={'/real-estate'} className={`navBar__link ${scrolled && 'navBar__link-scrolled'}`}>Real Estate</NavLink>
+                        <NavLink to={'/'} className={'navBar__link'} onClick={() => setShowNav(!showNav)}>Home</NavLink>
+                        <NavLink to={'/tours'} className={`navBar__link ${scrolled && 'navBar__link-scrolled'}`} onClick={() => setShowNav(!showNav)}>Tours</NavLink>
+                        <NavLink to={'/real-estate'} className={`navBar__link ${scrolled && 'navBar__link-scrolled'}`} onClick={() => setShowNav(!showNav)}>Real Estate</NavLink>
                     </nav>
                         
                 </div>
