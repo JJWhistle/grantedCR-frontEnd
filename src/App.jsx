@@ -1,5 +1,5 @@
 import '../build/css/app.css';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter,  Router, Route, Routes} from 'react-router-dom';
 
 import MainLayout from './layout/MainLayout';
 import ClientLayout from './layout/ClientLayout';
@@ -15,6 +15,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
+
       <Routes>
         
         <Route path='/' element={<MainLayout />}>
@@ -28,8 +29,8 @@ function App() {
         {/* TEST! */}
 
         <Route path='/' element={<ClientLayout />}>
-          <Route path='real-estate/:id' element={<RealEstateProperty />} />
-          <Route path='tours/:id' element={<Tour />} />
+            <Route path='real-estate/:id' element={<RealEstateProperty />} />
+            <Route path='tours/:id' element={<Tour />} />
         </Route>
         
       </Routes>

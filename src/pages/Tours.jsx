@@ -1,5 +1,6 @@
 import { clienteAxios } from "../config/axios";
 import { useEffect, useState } from "react";
+import { Helmet } from 'react-helmet';
 
 import Tour from '../components/Tour'
 
@@ -28,6 +29,9 @@ const Tours = () => {
   }, [])
   return (
     <>
+      <Helmet>
+                <title>Granted Tours</title>
+            </Helmet>
       <div className="tours">
         <div className="tours__container">
           <div className="tours__wrapper">

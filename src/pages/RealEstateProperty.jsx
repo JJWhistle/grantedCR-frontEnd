@@ -11,6 +11,7 @@ import BathLogo from '../assets/icons/BathLogo';
 import Construction from '../assets/icons/Construction';
 import Area from '../assets/icons/Area';
 import AgentCard from '../components/AgentCard';
+import { Helmet } from 'react-helmet';
 
 const RealEstateProperty = () => {
     const {id} = useParams();
@@ -61,6 +62,11 @@ const RealEstateProperty = () => {
 
   return (
     <>
+        {!loadingProperty &&
+            <Helmet>
+                <title>{`${property.title}`} </title>
+            </Helmet>
+        }
         <section className="real-estate-property">
             <div className="real-estate-property__container">
                 <div className="real-estate-propertty__wrapper">

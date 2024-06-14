@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { clienteAxios } from "../config/axios";
+import { Helmet } from 'react-helmet';
 import Property from "../components/Property";
 import RealEstateAside from "../components/RealEstateAside";
 
@@ -29,6 +30,9 @@ const RealEstate = () => {
       
     return (
         <>
+            <Helmet>
+                <title>Granted Real Estate</title>
+            </Helmet>
             <div className="real-estate">
                 <div className="real-estate__container">
                     <h2 className="real-estate__heading">Fulfill Your Dreams</h2>
