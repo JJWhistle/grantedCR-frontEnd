@@ -36,8 +36,8 @@ const Bar = () => {
                         
                     <nav className={`navBar ${showNav && 'showNav'}`}>
                         <NavLink to={'/'} className={'navBar__link'} onClick={() => setShowNav(!showNav)}>Home</NavLink>
-                        <NavLink to={'/tours'} className={`navBar__link ${scrolled && 'navBar__link-scrolled'}`} onClick={() => setShowNav(!showNav)}>Tours</NavLink>
                         <NavLink to={'/real-estate'} className={`navBar__link ${scrolled && 'navBar__link-scrolled'}`} onClick={() => setShowNav(!showNav)}>Real Estate</NavLink>
+                        <NavLink to={'/tours'} className={`navBar__link ${scrolled && 'navBar__link-scrolled'}`} onClick={() => setShowNav(!showNav)}>Tours</NavLink>
                     </nav>
                         
                 </div>
