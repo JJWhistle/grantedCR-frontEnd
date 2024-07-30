@@ -62,9 +62,15 @@ const RealEstateProperty = () => {
 
   return (
     <>
+    {console.log(property)}
         {!loadingProperty &&
             <Helmet>
                 <title>{`${property.title}`} </title>
+                <meta property="og:title" content={property.title} />
+                <meta property="og:description" content={property.description} />
+                <meta property="og:image" content={property.imageUrls[0]} />
+                <meta property="og:url" content={`https://www.grantedcr.com/${property.id}`} />
+                <meta property="og:type" content="article" />
             </Helmet>
         }
         <section className="real-estate-property">
