@@ -21,12 +21,20 @@ const RealEstateProperty = () => {
     const [loadingAgent, setLoadingAgent] = useState(true);
     const [agent, setAgent] = useState({});
     const [imageIndex, setImageIndex] = useState(0);
+    const [helmetInfo, setHelmetInfo] = useState({});
     
     useEffect( () => {
         const getProperty = async () => {
             try {
                 const {data} = await clienteAxios(`/public-properties/${id}`);
                 setProperty(data[0]);
+
+                setHelmetInfo({
+                    title: data[0].title,
+                    description: data[0].description,
+                    image: data[0].imageUrls[0],
+                    id: data[0]._id
+                });
             } catch (error) {
                 console.error(`Error! Could not get properties: ${error}`);
             }
@@ -62,14 +70,14 @@ const RealEstateProperty = () => {
 
   return (
     <>
-    {/* {console.log(property)} */}
+        {console.log(helmetInfo)}
         {!loadingProperty &&
             <Helmet>
-                <title>{`${property.title}`} </title>
-                <meta property="og:title" content={property.title} />
-                <meta property="og:description" content={property.description} />
-                <meta property="og:image" content={property.imageUrls[0]} />
-                <meta property="og:url" content={`https://www.grantedcr.com/real-estate/${property._id}`} />
+                <title>{`${helmetInfo.title}`} </title>
+                <meta property="og:title" content={helmetInfo.title} />
+                <meta property="og:description" content={helmetInfo.description} />
+                <meta property="og:image" content={helmetInfo.image} />
+                <meta property="og:url" content={`https://www.grantedcr.com/real-estate/${helmetInfo._id}`} />
                 <meta property="og:type" content="article" />
             </Helmet>
         }
