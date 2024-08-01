@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { clienteAxios } from "../config/axios";
 import { useParams } from "react-router-dom";
 import Slider from "../components/Slider";
-import Bar from '../components/Bar';
 import Galery from "../components/Galery";
 import { NumericFormat } from "react-number-format";
 import Map from '../assets/icons/Map';
@@ -70,17 +69,15 @@ const RealEstateProperty = () => {
 
   return (
     <>
-        {console.log(helmetInfo)}
-        {!loadingProperty &&
-            <Helmet>
-                <title>{`${helmetInfo.title}`} </title>
-                <meta property="og:title" content={helmetInfo.title} />
-                <meta property="og:description" content={helmetInfo.description} />
-                <meta property="og:image" content={helmetInfo.image} />
-                <meta property="og:url" content={`https://www.grantedcr.com/real-estate/${helmetInfo._id}`} />
-                <meta property="og:type" content="article" />
-            </Helmet>
-        }
+        <Helmet>
+            <title>{`Granted Costa Rica - ${helmetInfo.title}`} </title>
+            <meta property="og:title" content={helmetInfo.title} />
+            <meta property="og:description" content={helmetInfo.description} />
+            <meta property="og:image" content={helmetInfo.image} />
+            <meta property="og:url" content={`https://www.grantedcr.com/real-estate/${helmetInfo._id}`} />
+            <meta property="og:type" content="article" />
+        </Helmet>
+
         <section className="real-estate-property">
             <div className="real-estate-property__container">
                 <div className="real-estate-propertty__wrapper">
