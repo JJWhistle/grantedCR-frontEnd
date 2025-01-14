@@ -4,12 +4,33 @@ import BedLogo from "../assets/icons/BedLogo";
 import Area from '../assets/icons/Area';
 import Construction from '../assets/icons/Construction';
 import { NumericFormat } from 'react-number-format';
+import { useEffect, useState } from 'react';
 
 const FeaturedProperty = ({mostExpensiveItem}) => {
+    const [featuredProperty, setFeaturedProperty] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {    
+
+        const getProperties = async () => {
+          try {
+            const {data} = await clienteAxios('/public-properties?limit=1');
+    
+            setFeaturedProperty(data);      
+          } catch (error) {
+            console.log(error);
+          }
+          
+          setLoading(false);
+        
+        };
+        getProperties();
+      
+      }, []);
     
     return (
     <>
-        {mostExpensiveItem && <div className="featured">
+        {/* {!loading && <div className="featured">
                 <img className="featured__image" src={mostExpensiveItem.imageUrls[0]} alt="Featured Property" />
                 <div className="featured__info">
                     <div className='featured__flex'>
@@ -48,7 +69,7 @@ const FeaturedProperty = ({mostExpensiveItem}) => {
 
                 </div>
             </div>
-        }
+        } */}
         
     </>
   )

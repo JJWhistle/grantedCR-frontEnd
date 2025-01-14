@@ -4,14 +4,14 @@ import { useParams } from "react-router-dom";
 import Slider from "../components/Slider";
 import Galery from "../components/Galery";
 import { NumericFormat } from "react-number-format";
-import Map from '../assets/icons/Map';
+import MapIcon from '../assets/icons/Map';
 import BedLogo from '../assets/icons/BedLogo';
 import BathLogo from '../assets/icons/BathLogo';
 import Construction from '../assets/icons/Construction';
 import Area from '../assets/icons/Area';
 import AgentCard from '../components/AgentCard';
 import { Helmet } from 'react-helmet';
-
+import Map from "../components/Map";
 const RealEstateProperty = () => {
     const {id} = useParams();
 
@@ -88,45 +88,42 @@ const RealEstateProperty = () => {
                             <Galery property={property} loadingProperty={loadingProperty} setImageIndex={setImageIndex} />
                             
                             <div className="real-estate-property__info">
-                                        <h1 className="real-estate-property__heading">{property.title}</h1>
-                                        {!loadingProperty && <NumericFormat className='real-estate-property__price' value={property.price.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} />}
+                                <h1 className="real-estate-property__heading">{property.title}</h1>
+                                    {!loadingProperty && <NumericFormat className='real-estate-property__price' value={property.price.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} />}
                                         
-                                        <div className="real-estate-property__location">
-                                            <Map />
-                                            <p className="real-estate-property__text real-estate-property__text-price">{property.location}</p>
+                                    <div className="real-estate-property__location">
+                                        <MapIcon />
+                                        <p className="real-estate-property__text real-estate-property__text-price">{property.location}</p>
+                                    </div>
+                                    
+                                    <div className="real-estate-property__aspects">
+                                        <div className="real-estate-property__aspect">
+                                            <p className="real-estate-property__text real-estate-property__text-smaller">Land</p>
+                                            <div className="real-estate-property__flex">
+                                                {!loadingProperty && <NumericFormat className="real-estate-property__text" value={property.lot_size.toFixed(2)} displayType={'text'} thousandSeparator={true} suffix="m²" />}
+                                                    
+                                                <Area />
+                                            </div>
                                         </div>
                                         
-                                        <div className="real-estate-property__aspects">
-                                            <div className="real-estate-property__aspect">
-                                                <p className="real-estate-property__text real-estate-property__text-smaller">Land</p>
-                                                <div className="real-estate-property__flex">
-                                                    {!loadingProperty && <NumericFormat className="real-estate-property__text" value={property.lot_size.toFixed(2)} displayType={'text'} thousandSeparator={true} suffix="m²" />}
-                                                    
-                                                    <Area />
-                                                </div>
+                                        {property.building && <div className="real-estate-property__aspect">
+                                            <p className="real-estate-property__text real-estate-property__text-smaller">Building</p>
+                                            
+                                            <div className="real-estate-property__flex">
+                                                <NumericFormat className="real-estate-property__text" value={property.building.toFixed(2)} displayType={'text'} thousandSeparator={true} suffix="m²" />
+                                                    <Construction />
                                             </div>
-                                            
-                                            
-                                            {property.building && <div className="real-estate-property__aspect">
-                                                <p className="real-estate-property__text real-estate-property__text-smaller">Building</p>
+                                                        
+                                        </div>}
+                                        
+                                        {property.bedrooms &&
+                                            <div className="real-estate-property__aspect">
+                                                <p className="real-estate-property__text real-estate-property__text-smaller">Bedrooms</p>
                                                 
                                                 <div className="real-estate-property__flex">
-                                                    <NumericFormat className="real-estate-property__text" value={property.building.toFixed(2)} displayType={'text'} thousandSeparator={true} suffix="m²" />
-                                                    <Construction />
-                                                </div>
-                                                        
-                                            </div>}
-                                                    
-                                            {property.bedrooms && <div className="real-estate-property__aspect">
-                                                <p className="real-estate-property__text real-estate-property__text-smaller">Bedrooms</p>
-
-                                                <div className="real-estate-property__flex">
                                                     <p className="real-estate-property__text">{property.bedrooms}</p>
-                                                    
                                                     <BedLogo />
-
                                                 </div>
-
                                             </div>}
                                             
                                             {property.bathrooms && <div className="real-estate-property__aspect">
@@ -148,6 +145,7 @@ const RealEstateProperty = () => {
                                  </div>
 
 
+                            {!loadingProperty && <Map property={property} />}
                         </div>
 
                         <aside className="real-estate-property__col real-estate-property__col-right">
@@ -156,6 +154,7 @@ const RealEstateProperty = () => {
                     </div>
                 </div>
             </div>
+
         </section>
     </>
   )

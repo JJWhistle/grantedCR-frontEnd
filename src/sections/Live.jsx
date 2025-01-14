@@ -14,7 +14,7 @@ const Live = () => {
 
     const getProperties = async () => {
       try {
-        const {data} = await clienteAxios('/public-properties');
+        const {data} = await clienteAxios('/public-properties?limit=6');
 
         setProperties(data);      
       } catch (error) {
@@ -44,7 +44,7 @@ const Live = () => {
 
             <div className="live__grid">
 
-              {loading ? <p>Loading...</p> : displayNewProperties.map(property => (
+              {loading ? <p>Loading...</p> : properties.map(property => (
                   <HomeProperty
                     key={property._id}
                     property={property}
