@@ -140,7 +140,7 @@ const RealEstateProperty = () => {
 
 
                                         <div className="real-estate-property__description">
-                                            <p className="real-estate-property__text whitespace-pre-line">{property.description}</p>
+                                            <p className="real-estate-property__text">{property.description}</p>
                                     </div>
                                  </div>
 
